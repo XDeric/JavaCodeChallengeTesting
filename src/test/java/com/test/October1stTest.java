@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import com.challenges.October1stChallenge;
 
 import org.junit.jupiter.params.*;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class October1stTest {
 	
@@ -37,13 +38,21 @@ public class October1stTest {
 	
 	
 	
-	@Test
+	@ParameterizedTest
+	@ValueSource(strings = {"apple","abcdZYXW","Hello world!"})
 	@DisplayName("Testing atbash method")
-	void testAtbash() {
+	void testAtbash(String str) {
 		System.out.println("atbash called");
-		String actual = octo.atbash("apple");
+		String actual = octo.atbash(str);
 		System.out.println(actual);
-		assertEquals("zkkov", actual);
+		if (str == "apple") {
+			assertEquals("zkkov", actual);
+		} else if (str == "abcdZYXW") {			
+			assertEquals("zyxwABCD", actual);
+		}else if (str == "Hello world!") {			
+			assertEquals("Svool dliow!", actual);
+		}
+		
 	}
 
 }
