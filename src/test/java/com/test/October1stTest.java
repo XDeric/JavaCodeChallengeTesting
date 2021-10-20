@@ -35,7 +35,7 @@ public class October1stTest {
 		octo = null;
 	}
 	
-	@RunWith(Parameterized.class)
+	
 	
 	@Test
 	@DisplayName("Testing atbash method")
